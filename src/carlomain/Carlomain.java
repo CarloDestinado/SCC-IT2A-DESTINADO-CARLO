@@ -6,20 +6,20 @@ public class Carlomain {
 
     
     public static void main(String[] args) {
-          //Grades grd = new Grades();
-        //grd.getGrades();
+          Grades grd = new Grades();
+        grd.getGrades();
         
-        //Product pr = new Product();
+        Product pr = new Product();
       
-       //System.out.printf("%-10s %-10s %-10s %-10s %-10s %-10.5s\n",
-                // "Product ID", "Name" , "Price" , "Stocks" , "Status" , "Tep");
+       System.out.printf("%-10s %-10s %-10s %-10s %-10s %-10.5s\n",
+                "Product ID", "Name" , "Price" , "Stocks" , "Status" , "Tep");
        
-       //pr.AddProduct(10011, "Soap", 20, 10, 200);
-       //pr.viewProduct();
+       pr.AddProduct(10011, "Soap", 20, 10, 200);
+       pr.viewProduct();
        
-      // Product pr1 = new Product();
-       //pr1.AddProduct(10012, "Cards", 50, 0, 0);
-       //pr1.viewProduct();
+      Product pr1 = new Product();
+       pr1.AddProduct(10012, "Cards", 50, 0, 0);
+       pr1.viewProduct();
        
        Scanner s = new Scanner(System.in);
         Accounts[] acc = new Accounts[100];

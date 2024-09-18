@@ -1,8 +1,9 @@
 package carlomain;
 
+
 public class Product {
     
-     int id;
+         int id;
     String name;
     int price, stocks;
     int tep;
