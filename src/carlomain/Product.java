@@ -1,29 +1,53 @@
 package carlomain;
 
+import java.util.Scanner;
 
 public class Product {
+     public static void main(String[] args) {
+        products[] pr = new products[100];  
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter the number of products: ");
+        int nump = sc.nextInt();
+
+     
+        for (int i = 0; i < nump; i++) {
+            System.out.println("Enter details of product " + (i + 1) + ":");
+
+            System.out.print("ID: ");
+            int id = sc.nextInt();
+
+            System.out.print("Name: ");
+            String name = sc.next();
+
+            System.out.print("Price: ");
+            double pri = sc.nextDouble();
+
+            System.out.print("Stock: ");
+            int st = sc.nextInt();
+
+            System.out.print("Sold: ");
+            int sold = sc.nextInt();
+
+            products prod = new products(); 
+            prod.addProduct(id, name, st, pri, sold);
+
+            pr[i] = prod;  
+        }
+
     
-         int id;
-    String name;
-    int price, stocks;
-    int tep;
-    
-    public void AddProduct(int pid, String pname, int pr, int st, int temp){
-    
-        this.id = pid;
-        this.name = pname;
-        this.price = pr;
-        this.stocks = st;
-        this.tep = temp;
-        
+        System.out.println("----------------------");
+        System.out.println("\nProduct Details:\n");
+        System.out.println("----------------------");
+
+        System.out.printf("%-10s %-20s %-10s %-20s %-20s %-20s %-20s %-20s\n",
+                          "ID", "Name", "Stocks", "Price", "Items Sold", "Total Expected Profit", "Total Profit", "Status");
+
+        for (int i = 0; i < nump; i++) {
+            pr[i].viewProduct();
+        }
+
+        sc.close();
     }
-    
-    public void viewProduct(){
-        double total = this.price * this.stocks;
-        String status = ( this.stocks == 0) ? "Out of Stuck " : "Available";
-        
-        
-        System.out.printf("%-10d %-10s %-10d %-10d %-10s %-10.2f\n", this.id, this.name, this.price, this.stocks, status, total);
-    }
-    
 }

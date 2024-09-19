@@ -1,90 +1,98 @@
-
 package carlomain;
 
 import java.util.Scanner;
+     
+  public class Grade {
+    public static void main(String[] args) {
+        Grades[] gradeRecords = new Grades[100];
+        int recordCount = 0;
+        Scanner input = new Scanner(System.in);
+        boolean isRunning = true;
 
-public class Grade {
-    
-     public void editGrades(Grades[] grs, int id, int size){
-        Scanner sc = new Scanner(System.in);
-      for(int i = 0; i < size; i++){
-          if(id == grs[i].id){
-              System.out.println("Enter NEW grades of student "+grs[i].id+":");
-                System.out.print("Prelim: ");
-                double npr = sc.nextDouble();
-                grs[i].p = npr;
+        while (isRunning) {
+            System.out.println("Select an option:");
+            System.out.println("1. Add Grades");
+            System.out.println("2. View Grades");
+            System.out.println("3. Edit Grades");
+            System.out.println("4. Delete Grades");
+            System.out.println("5. Exit");
 
-          }
-      }
-        
-    }
-    
-    public void genGrade(){
-     Scanner sc = new Scanner(System.in);
-        Grades[] gr = new Grades[100];
-        
-        int nums = 0;
-        int res;
-        
-        do{
-        System.out.println("Grades Demo App");
-        System.out.println("-------------------------------------");
-        System.out.println("Actions:");
-        System.out.println("1. Add Records");
-        System.out.println("2. View Records");
-        System.out.println("3. Edit Records");
-        System.out.println("4. Delete Records");
-        System.out.println("5. Exit");
-        System.out.println("------------------------------------");
-        
-        System.out.print("Select an Option: ");
-        int option = sc.nextInt();
-        
-        while(option > 5){
-            System.out.print("Invalid Selection, Try Again: ");
-            option = sc.nextInt();
+            System.out.print("Enter choice: ");
+            int choice = input.nextInt();
+            input.nextLine();  
+
+            switch (choice) {
+                case 1:
+                    boolean addMore = true;
+                    while (addMore) {
+                        grades newGrade = new grades();
+                        newGrade.getGrade();
+                        gradeRecords[recordCount++] = newGrade;
+                        System.out.print("Do you want to add another record? (yes/no): ");
+                        String continueAdding = input.nextLine();
+                        addMore = continueAdding.equalsIgnoreCase("yes");
+                    }
+                    break;
+
+                case 2:
+                    System.out.print("Enter student ID to view: ");
+                    String viewId = input.nextLine();
+                    boolean found = false;
+                    for (int i = 0; i < recordCount; i++) {
+                        if (gradeRecords[i] != null && gradeRecords[i].getId().equals(viewId)) {
+                            gradeRecords[i].printGradeDetails();
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (!found) {
+                        System.out.println("Record with ID " + viewId + " not found.");
+                    }
+                    break;
+
+                case 3:
+                    System.out.print("Enter student ID to edit: ");
+                    String editId = input.nextLine();
+                    found = false;
+                    for (int i = 0; i < recordCount; i++) {
+                        if (gradeRecords[i] != null && gradeRecords[i].getId().equals(editId)) {
+                            gradeRecords[i].editGrade();
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (!found) {
+                        System.out.println("Record with ID " + editId + " not found.");
+                    }
+                    break;
+
+                case 4:
+                    System.out.print("Enter student ID to delete: ");
+                    String deleteId = input.nextLine();
+                    found = false;
+                    for (int i = 0; i < recordCount; i++) {
+                        if (gradeRecords[i] != null && gradeRecords[i].getId().equals(deleteId)) {
+                            gradeRecords[i].deleteGrade();
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (!found) {
+                        System.out.println("Record with ID " + deleteId + " not found.");
+                    }
+                    break;
+
+                case 5:
+                    isRunning = false;
+                    System.out.println("Exiting...");
+                    break;
+
+                default:
+                    System.out.println("Invalid option! Please try again.");
+                    break;
+            }
         }
-        
-        switch(option){
-            case 1:
-                System.out.print("Enter no. of Students: ");
-                nums = sc.nextInt();
 
-                for(int i=0; i < nums; i++){
-                    System.out.println("Enter details of student "+(i+1)+":");
-                    System.out.print("ID: ");
-                    int id = sc.nextInt();
-                    System.out.print("Name: ");
-                    String name = sc.next();
-                    System.out.print("Prelim: ");
-                    double pr = sc.nextDouble();
-                    System.out.print("Midterm: ");
-                    double md = sc.nextDouble();
-                    System.out.print("Prefinal: ");
-                    double pf = sc.nextDouble();
-                    System.out.print("Final: ");
-                    double fn = sc.nextDouble();
-                    gr[i] = new Grades();
-                    gr[i].addGrades(id, name, pr, md, pf, fn);
-                }
-            break;
-            case 2:
-                 for(int i=0; i < nums; i++){
-                      gr[i].viewGrades();
-                 }
-            break;
-            case 3:
-                System.out.println("Enter id to update: ");
-                int ids = sc.nextInt();
-                editGrades(gr, ids, nums);
-            break;
-        }
-       
-        System.out.print("Do you want to continue ?  (1 / 0):  ");
-        res =  sc.nextInt();
-
-        }while(res != 0 );
-        
+        input.close();
     }
-    
 }
