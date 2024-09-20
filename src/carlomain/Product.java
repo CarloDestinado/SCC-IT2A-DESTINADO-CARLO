@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Product {
      public static void main(String[] args) {
-        products[] pr = new products[100];  
+        Products[] pr = new Products[100];  
 
         Scanner sc = new Scanner(System.in);
 
@@ -30,7 +30,7 @@ public class Product {
             System.out.print("Sold: ");
             int sold = sc.nextInt();
 
-            products prod = new products(); 
+            Products prod = new Products(); 
             prod.addProduct(id, name, st, pri, sold);
 
             pr[i] = prod;  

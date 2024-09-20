@@ -8,7 +8,7 @@ public class Carlomain {
     public static void main(String[] args) {
           //PRODUCT//
          
-      /* products[] pr = new products[100];
+      /* Products[] pr = new Products[100];
             
      Scanner sc = new Scanner(System.in);
 
@@ -30,12 +30,12 @@ public class Carlomain {
             double pri = sc.nextDouble();
 
             System.out.print("Stock: ");
-          /int st = sc.nextInt();
+          int st = sc.nextInt();
             
             System.out.print("Sold: ");
            int sold = sc.nextInt();
             
-           products prod = new products();
+           Products prod = new Products();
            prod.addProduct(id, name, st, pri, sold);
 
             
@@ -47,9 +47,9 @@ public class Carlomain {
        System.out.println("----------------------");
         
       System.out.printf("%-10s %-20s %-10s %-20s %-20s %-20s %-20s %-20s\n", 
-                      //    "ID", "Name", "Stocks", "Price", "Items Sold", "Total Expected Profit", "Total Profit", "Status");
+               "ID", "Name", "Stocks", "Price", "Items Sold", "Total Expected Profit", "Total Profit", "Status");
         
-       for (i = 0; i < nump; i++) {
+       for(i = 0; i < nump; i++) {
            pr[i].viewProduct();
         }
 
@@ -58,14 +58,15 @@ public class Carlomain {
 }
 */
       // GRADES//
-     /* 
-        public static void main(String[] args) {
-             Grades grd = new Grades();
-                 grd.getGrade();*/
+      
+       Grade gr = new Grade();
+            gr.genGrade();
      
      
       
-        Scanner scanner = new Scanner(System.in);
+       //Account//
+       
+       /*Scanner scanner = new Scanner(System.in);
         
         System.out.print("Enter number of accounts: ");
         int numberOfAccounts = scanner.nextInt();
@@ -110,4 +111,7 @@ public class Carlomain {
 
         scanner.close();
     }
-}
+    
+    
+} 
+*/
